@@ -1,160 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Octocat</title>
-    <style>
-        
-        body {
-            background-color: aliceblue; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Pikachu</title>
+<style>
+  body {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
 
-        .octocat {
-            position: relative;
-            width: 500px;
-            height: 400px;
-        }
+  .pikachu {
+    position: relative;
+    width: 400px;
+    height: 450px;
+  }
+
+  .pikachu .body {
+    position: absolute;
+    bottom: 0;
+    width: 280px;
+    height: 320px;
+    background-color: yellow;
+    border-radius: 50% 50% 45% 45%;
+    border: 3px solid #333;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .pikachu .head {
+    position: absolute;
+    width: 290px;
+    height: 260px;
+    background-color: yellow;
+    border: 3px solid #333;
+    border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+
+  .eye {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: #333;
+    border-radius: 50%;
+    top: 90px;
+  }
+
+  .eye::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border-radius: 50%;
+  }
+
+  .eye.left {
+    left: 60px;
+  }
+
+  .eye.right {
+    right: 60px;
+  }
+
+  .cheek {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #F00;
+    border-radius: 50%;
+    border: 2px solid #C00;
+    top: 130px;
+  }
+
+  .cheek.left {
+    left: 20px;
+  }
+
+  .cheek.right {
+    right: 20px;
+  }
+
+  .mouth {
+    position: absolute;
+    width: 30px;
+    height: 15px;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .mouth::before,
+  .mouth::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 15px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom: 4px solid #8B4513; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+  }
+
+  .mouth::before {
+    transform: rotate(20deg);
+    left: -5px;
+  }
+  
+  .mouth::after {
+    transform: rotate(-20deg) scaleX(-1);
+    right: -5px;
+  }
+
+  .ear {
+    position: absolute;
+    width: 50px;
+    height: 150px;
+    background: #FFDE00;
+    border: 3px solid #333;
+    border-radius: 50% 50% 0 0;
+    top: -160px;
+    z-index: 0;
+  }
+
+  .ear::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 50px;
+    height: 40px;
+    background: #333;
+    border-radius: 50% 50% 0 0;
+  }
+
+  .ear.left {
+    left: 50px;
+    transform: rotate(-25deg);
+  }
+
+  .ear.right {
+    right: 50px;
+    transform: rotate(25deg);
+  }
+
+  .tail {
+    position: absolute;
+    z-index: 0;
+    bottom: 90px;
+    right: -80px;
+  }
+  
+  .tail-segment {
+    position: absolute;
+    background-color: #8B4513; 
+    border: 3px solid #333;
+  }
+
+  .tail .s1 {
+    width: 60px;
+    height: 30px;
+    transform: rotate(45deg);
+    bottom: -15px;
+    right: 15px;
+  }
+  
+  .tail .s2 {
+    width: 90px;
+    height: 30px;
+    background-color: #FFDE00;
+    transform: rotate(-45deg);
+    bottom: 25px;
+    right: 35px;
+  }
+
+  .tail .s3 {
+    width: 120px;
+    height: 30px;
+    background-color: #FFDE00;
+    transform: rotate(45deg);
+    bottom: 85px;
+    right: 15px;
+  }
+
+  .tail .s4 {
+    width: 50px;
+    height: 30px;
+    background-color: #FFDE00;
+    transform: rotate(-45deg);
+    bottom: 140px;
+    right: 70px;
+  }
 
 
-        .head {
-            position: absolute;
-            width: 300px;
-            height: 250px;
-            background: #24292e; 
-            border-radius: 50% 50% 15% 15% / 55% 55% 45% 45%;
-            z-index: 10;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: 120px;
-        }
-        .face {
-            position: absolute;
-            width: 180px;
-            height: 90px;
-            background: #d1d5da; 
-            border-radius: 45% 45% 50% 50% / 60% 60% 40% 40%;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .eye {
-            position: absolute;
-            width: 35px;
-            height: 45px;
-            background: #24292e;
-            border-radius: 50%;
-            top: 20px;
-        }
-
-        .eye.left {
-            left: 35px;
-        }
-        
-        .eye.right {
-            right: 35px;
-        }
-
-    
-        .ear {
-            position: absolute;
-            width: 35px;
-            height: 50px;
-            background: #24292e;
-            top: -25px;
-            z-index: 5;
-            border-radius: 50% 50% 0 0;
-        }
-
-        .ear.left {
-            left: 110px;
-            transform: rotate(-15deg);
-        }
-
-        .ear.right {
-            right: 110px;
-            transform: rotate(15deg);
-        }
-
-    
-        .tentacles {
-            position: absolute;
-            width: 100%;
-            height: 150px;
-            bottom: 0;
-            left: 0;
-        }
-
-    
-        .tentacle {
-            position: absolute;
-            height: 200px; 
-            width: 50px;
-            border-bottom: 25px solid #24292e;
-            border-radius: 0 0 50px 50px;
-            bottom: 0;
-            z-index: 5;
-        }
-        
-        .t1 {
-            left: 50%;
-            transform: translateX(-50%) rotate(0deg);
-            height: 150px;
-            bottom: -20px;
-        }
-
-        .t2 {
-            left: 160px;
-            transform: rotate(-35deg);
-            transform-origin: bottom center;
-        }
-        
-        .t3 {
-            right: 160px;
-            transform: rotate(35deg);
-            transform-origin: bottom center;
-        }
-
-        .t4 {
-            left: 80px;
-            transform: rotate(-65deg);
-            transform-origin: bottom center;
-        }
-
-        .t5 {
-            right: 80px;
-            transform: rotate(65deg);
-            transform-origin: bottom center;
-        }
-
-    </style>
+</style>
 </head>
 <body>
 
-<div class="octocat">
-   
-    <div class="head">
-        <div class="ear left"></div>
-        <div class="ear right"></div>
-        <div class="face">
-            <div class="eye left"></div>
-            <div class="eye right"></div>
-        </div>
-    </div>
-    
-    <div class="tentacles">
-        <div class="tentacle t1"></div>
-        <div class="tentacle t2"></div>
-        <div class="tentacle t3"></div>
-        <div class="tentacle t4"></div>
-        <div class="tentacle t5"></div>
-    </div>
+<div class="pikachu">
+  <div class="head">
+    <div class="ear left"></div>
+    <div class="ear right"></div>
+    <div class="eye left"></div>
+    <div class="eye right"></div>
+    <div class="cheek left"></div>
+    <div class="cheek right"></div>
+    <div class="mouth"></div>
+  </div>
+  <div class="body"></div>
+  <div class="tail">
+    <div class="tail-segment s1"></div>
+    <div class="tail-segment s2"></div>
+    <div class="tail-segment s3"></div>
+    <div class="tail-segment s4"></div>
+  </div>
 </div>
 
 </body>
